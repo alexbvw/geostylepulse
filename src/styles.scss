@@ -32,6 +32,9 @@ h4, h5, h6 {
     ion-label.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
         font-family: 'SoraLight';
     }
+    ion-button{
+        text-transform: lowercase;
+    }
 }
 
 label {

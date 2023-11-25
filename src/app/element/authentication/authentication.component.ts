@@ -49,7 +49,8 @@ export class AuthenticationComponent {
   }
 
   validatePhone(phone_number : any) {
-    const regularExpression = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+    console.log(phone_number)
+    const regularExpression = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
     return regularExpression.test(String(phone_number).toLowerCase());
    }
   

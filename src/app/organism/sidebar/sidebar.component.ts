@@ -10,32 +10,32 @@ export class SidebarComponent {
     navLinks:any = [
       {
         path: 'spot',
-        label: 'Spot',
+        label: 'spot',
         icon: 'locate-outline'
       },
       {
         path: 'pulse',
-        label: 'Pulse',
+        label: 'pulse',
         icon: 'pulse-outline'
       },
       {
         path: 'products',
-        label: 'Products',
+        label: 'products',
         icon: 'pricetags-outline'
       },
       {
         path: 'services',
-        label: 'Services',
+        label: 'services',
         icon: 'cut-outline'
       },
       {
         path: 'bookings',
-        label: 'Bookings',
+        label: 'bookings',
         icon: 'today-outline'
       },
       {
         path: 'orders',
-        label: 'Orders',
+        label: 'orders',
         icon: 'push-outline'
       }
     ]
