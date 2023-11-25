@@ -22,6 +22,7 @@ import { ArticlesComponent } from './page/articles/articles.component';
 import { SettingsComponent } from './page/settings/settings.component';
 import { TutorialsComponent } from './page/tutorials/tutorials.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
 @NgModule({
@@ -47,10 +48,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    IonicModule.forRoot({})
+    IonicModule.forRoot({}),
+    NgxMaskDirective, 
+    NgxMaskPipe,
   ],
   providers: [
-    
+    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })

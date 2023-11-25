@@ -49,7 +49,7 @@ export class AuthenticationComponent {
   }
 
   validatePhone(phone_number : any) {
-    const regularExpression = /^(\+27|0)[6-8][0-9]{8}$/;
+    const regularExpression = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
     return regularExpression.test(String(phone_number).toLowerCase());
    }
   
