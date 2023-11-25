@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "SoraLight";
+    src: local("SoraBold"), url('./assets/fonts/SoraLight.ttf') format("truetype");
+}
+@font-face {
+    font-family: "SoraRegular";
+    src: local("SoraRegular"), url('./assets/fonts/SoraRegular.ttf') format("truetype");
+}
+@font-face {
+    font-family: "SoraBold";
+    src: local("SoraBold"), url('./assets/fonts/SoraBold.ttf') format("truetype");
+}
+
+* {
+    font-family: 'SoraLight';
+}
+
+body {
+    font-family: 'SoraRegular';
+}   
+
+h1, h2, h3 {
+    font-family: 'SoraBold';
+}
+
+h4, h5, h6 {
+    font-family: 'SoraLight';
+}
+
+:root{
+    ion-label.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
+        font-family: 'SoraLight';
+    }
+}
+
+label {
+    font-family: 'SoraLight';
+}

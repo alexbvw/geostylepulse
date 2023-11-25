@@ -1,0 +1,53 @@
+<ion-content padding>
+    <ion-text color="primary" class="authentication-text ion-text-center">
+        <h4>Welcome to Your Digital Styling Partner</h4>
+        <h5>Ready to revolutionize the way you manage your day?</h5>
+    </ion-text>
+    <span class="authentication-toggle">
+        <ion-toggle labelPlacement="stacked" [(ngModel)]="authenticationToggle">Login / Register</ion-toggle>
+    </span>
+    <div class="form-container">
+        <form class="form" *ngIf="!authenticationToggle">
+            <div class="form-group">
+              <label for="phone_number">Phone Number</label>
+              <input [(ngModel)]="phone_number" type="text" id="phone_number" name="phone_number" required="" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+              <label for="pin_code">Pin Code</label>
+              <input [(ngModel)]="pin_code" type="password" id="pin_code" name="pin_code" required="" placeholder="Pin Code">
+            </div>
+  
+            <button class="form-submit-btn" type="submit" (click)="login()">LOGIN</button>
+          </form>
+        <form class="form" *ngIf="authenticationToggle">
+          <div class="form-group">
+            <label for="stylist_name">Name</label>
+            <input [(ngModel)]="stylist_name" type="text" id="stylist_name" name="stylist_name" required="" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input [(ngModel)]="phone_number" type="text" id="phone_number" name="phone_number" required="" placeholder="Phone Number">
+          </div>
+          <div class="form-group">
+            <label for="pin_code">Search Address</label>
+            <input [formControl]="address" type="text" id="location" name="location" required="" placeholder="Start typing results">
+            <span id="addressResult" *ngFor="let addressResult of locationService.results; let i=index" (click)="selectLocation(addressResult.title)">
+                <h4>{{addressResult.title}}</h4>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="pin_code">Pin Code</label>
+            <input [(ngModel)]="pin_code" type="password" id="pin_code" name="pin_code" required="" placeholder="Pin Code">
+          </div>
+          <div class="form-group">
+            <label for="pin_codeverify">Verify Pin Code</label>
+            <input [(ngModel)]="pin_codeverify" type="password" id="pin_codeverify" name="pin_codeverify" required="" placeholder="Verify Pin Code">
+          </div>
+          <!-- <div class="form-group">
+            <label for="textarea">How Can We Help You?</label>
+            <textarea name="textarea" id="textarea" rows="10" cols="50" required="">          </textarea>
+          </div> -->
+          <button class="form-submit-btn" type="submit" (click)="register()">NEXT</button>
+        </form>
+      </div>
+  </ion-content>

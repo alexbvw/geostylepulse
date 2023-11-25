@@ -1,0 +1,22 @@
+<ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" side="end" type="overlay">
+      <ion-header>
+        <span class="stylist-info">
+            <ion-avatar>
+                <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              </ion-avatar>
+        </span>
+    
+      </ion-header>
+      <ion-content>
+        <ion-list [inset]="true">
+          <ion-item routerLink={{link.path}} *ngFor="let link of navLinks">
+            <ion-label>{{link.label}}</ion-label>
+            <ion-icon name={{link.icon}} size="large"></ion-icon>
+          </ion-item>
+        </ion-list>
+        <ion-button id="logout-btn" (click)="authenticationService.logout()" expand="full">LOGOUT</ion-button>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
