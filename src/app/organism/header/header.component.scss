@@ -1,3 +1,11 @@
 ion-header{
     border-bottom: 1px solid #fefefe;
 }
+.spot-select-box{
+    display: flex;
+    ion-icon{
+        cursor: pointer;
+        font-size: 32px;
+        margin: auto 20px auto -15px;
+    }
+}

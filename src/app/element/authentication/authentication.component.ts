@@ -5,6 +5,7 @@ import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { LocationService } from 'src/app/helper/location.service';
 import { AuthenticationService } from 'src/app/helper/authentication.service';
 import { jwtDecode } from 'jwt-decode';
+import { spotsService } from '../../helper/spots.service';
 
 @Component({
   selector: 'app-authentication',
@@ -34,7 +35,8 @@ export class AuthenticationComponent {
     public router: Router,
     public fb: FormBuilder,
     public authenticationService: AuthenticationService,
-    public locationService: LocationService
+    public locationService: LocationService,
+    private spotsService : spotsService
   ) { 
  
   }
@@ -106,11 +108,24 @@ export class AuthenticationComponent {
         this.authenticationService.presentToast('Pin codes do not match')
       } else{
         console.log('Complete Step 1')
-        this.authenticationService.presentToast('Complete Step 1')
+        this.authenticationService.presentToast('Invalid Fields')
       }
     }
-   
   }
+
+  async getStylistSpots(){
+    this.spotsService.getStylistSpots()
+    .then((res:any) => {
+      console.log(res)
+      this.spotsService.spots = res.spots
+      if(localStorage.getItem("currentSpot") && localStorage.getItem("currentSpot") != "null"){
+        this.spotsService.current_spot = JSON.parse(localStorage.getItem("currentSpot") ?? "")
+      this.spotsService.current_spot_name = this.spotsService.current_spot.name
+      console.log(this.spotsService.current_spot_name)
+      }
+    })
+  }
+
   
   back1(){
     this.step1 = true;
@@ -167,6 +182,7 @@ async searchAddress(address:any){
         this.authenticationService.stylistId = this.authenticationService.stylistDecode.id
         localStorage.setItem('stylistId', this.authenticationService.stylistId)
         this.authenticationService.presentToast('welcome to geostyle pulse')
+        await this.getStylistSpots()
         this.router.navigate(['pulse'])
         // setTimeout(() => {
         //   window.location.reload()

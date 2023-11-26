@@ -49,6 +49,11 @@ export class AppComponent {
     .then((res:any) => {
       console.log(res)
       this.spotsService.spots = res.spots
+      if(localStorage.getItem("currentSpot") && localStorage.getItem("currentSpot") != "null"){
+        this.spotsService.current_spot = JSON.parse(localStorage.getItem("currentSpot") ?? "")
+      this.spotsService.current_spot_name = this.spotsService.current_spot.name
+      console.log(this.spotsService.current_spot_name)
+      }
     })
   }
 

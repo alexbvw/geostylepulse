@@ -9,8 +9,14 @@
     
       </ion-header>
       <ion-content>
+        <ion-card id="selectSpotMessage" [style.display]="spotsService.current_spot != null  ? 'none' : ''">
+        <ion-card-header>
+          <ion-icon name="location-outline"></ion-icon>
+          <ion-card-subtitle>select a spot to see menu items</ion-card-subtitle>
+        </ion-card-header>
+        </ion-card>
         <ion-list [inset]="true">
-          <ion-item routerLink={{link.path}} *ngFor="let link of navLinks">
+          <ion-item routerLink={{link.path}} *ngFor="let link of navLinks" [style.display]="spotsService.current_spot != null  ? '' : 'none'">
             <ion-label>{{link.label}}</ion-label>
             <ion-icon name={{link.icon}} size="medium"></ion-icon>
           </ion-item>

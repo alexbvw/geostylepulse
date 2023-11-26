@@ -11,7 +11,7 @@
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="authenticationService?.isLoggedIn && !routeService.currentRoute.includes('appchat')" (click)="toggleChat()">
 <ion-fab-button id="fab">
-  <i class="bi bi-chat-dots" *ngIf="!chat_active"></i>
-  <i class="bi bi-x-circle" *ngIf="chat_active"></i>
+  <ion-icon name="chatbubbles-outline" *ngIf="!chat_active"></ion-icon>
+  <ion-icon name="close-outline" *ngIf="chat_active"></ion-icon>
 </ion-fab-button>
 </ion-fab>

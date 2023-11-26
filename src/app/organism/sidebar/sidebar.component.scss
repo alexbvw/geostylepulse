@@ -13,3 +13,15 @@
 ion-menu{
     border-left: 1px solid #fefefe;
 }
+#selectSpotMessage{
+    text-align: center;
+    ion-card-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    ion-icon{
+        margin: 0px auto 10px auto;
+        font-size: 62px
+    }
+}

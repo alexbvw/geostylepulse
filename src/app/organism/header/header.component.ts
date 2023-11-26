@@ -17,12 +17,25 @@ export class HeaderComponent {
 
     }
 
+    async ngOnInit() {
+      if(this.authenticationService.isLoggedIn && localStorage.getItem("currentSpot")){
+
+      }
+    }
+
     selectionChanged(data:any){
       for(let [spotIndex, spot] of this.spotsService.spots.entries()) {
         if(spot.name == data.detail.value){
           this.spotsService.current_spot = spot
+          localStorage.setItem("currentSpot", JSON.stringify(spot))
         }
       }
       console.log(this.spotsService.current_spot)
+    }
+
+    async removeSelection(){
+      localStorage.removeItem('currentSpot')
+      this.spotsService.current_spot_name = null
+      this.spotsService.current_spot = null
     }
 }

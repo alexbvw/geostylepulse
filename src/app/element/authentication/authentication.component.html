@@ -1,17 +1,19 @@
 <ion-content padding>
+    <span class="ion-text-center logoHolder">
+      <img id="authLogo" src="../../../assets/logo.svg" alt="">
+    </span>
     <ion-text color="primary" class="authentication-text ion-text-center">
-        <h4>Welcome to Your Digital Styling Partner</h4>
         <h5>Ready to revolutionize the way you manage your day?</h5>
     </ion-text>
     <div class="form-container">
         <form class="form" *ngIf="!authenticationToggle">
             <div class="form-group">
               <label for="phone_number">Phone Number</label>
-              <input mask='(000) 000-0000' [(ngModel)]="phone_number" type="text" id="phone_number" name="phone_number" required="" placeholder="Phone Number">
+              <input mask='(000) 000-0000' [(ngModel)]="phone_number" type="text" id="phone_number" name="phone_number" required="" placeholder="(000) 000-0000">
             </div>
             <div class="form-group">
               <label for="pin_code">Pin Code</label>
-              <input mask='00000' [(ngModel)]="pin_code" type="password" id="pin_code" name="pin_code" required="" placeholder="Pin Code">
+              <input mask='00000' [(ngModel)]="pin_code" type="password" id="pin_code" name="pin_code" required="" placeholder="5 digit pin">
             </div>
   
             <button class="form-submit-btn" type="submit" (click)="login()">login</button>
@@ -23,7 +25,7 @@
           </div>
           <div class="form-group">
             <label for="phone_number">Phone Number</label>
-            <input mask='(000) 000-0000' [(ngModel)]="phone_number" type="text" id="phone_number" name="phone_number" required="" placeholder="Phone Number">
+            <input mask='(000) 000-0000' [(ngModel)]="phone_number" type="text" id="phone_number" name="phone_number" required="" placeholder="(000) 000-0000">
           </div>
           <div class="form-group">
             <label for="pin_code">Search Address</label>
@@ -34,11 +36,11 @@
           </div>
           <div class="form-group">
             <label for="pin_code">Pin Code</label>
-            <input mask='00000' [(ngModel)]="pin_code" type="password" id="pin_code" name="pin_code" required="" placeholder="5 Digit Pin Code">
+            <input mask='00000' [(ngModel)]="pin_code" type="password" id="pin_code" name="pin_code" required="" placeholder="5 Digit Pin">
           </div>
           <div class="form-group">
             <label for="pin_codeverify">Verify Pin Code</label>
-            <input mask='00000' [(ngModel)]="pin_codeverify" type="password" id="pin_codeverify" name="pin_codeverify" required="" placeholder="Verify Pin Code">
+            <input mask='00000' [(ngModel)]="pin_codeverify" type="password" id="pin_codeverify" name="pin_codeverify" required="" placeholder="Verify Pin">
           </div>
           <!-- <div class="form-group">
             <label for="textarea">How Can We Help You?</label>
