@@ -1,8 +1,12 @@
 <ion-header class="ion-no-border">
     <ion-toolbar class="ion-no-border">
+      <ion-title slot="start">{{routeService.currentRoute.replace('/', '')}}</ion-title>
+      <ion-select [(ngModel)]="spotsService.current_spot_name" (ionChange)='selectionChanged($event)' class="ion-margin" slot="end" aria-label="Fruit" interface="popover" placeholder="Select Spot">
+        <ion-select-option *ngFor="let spot of spotsService.spots" value={{spot.name}}>{{spot.name}}</ion-select-option>
+      </ion-select>
       <ion-buttons class="ion-hide-lg-up" slot="end">
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-buttons>
-      <ion-title>{{routeService.currentRoute.replace('/', '')}}</ion-title>
     </ion-toolbar>
+    
   </ion-header>

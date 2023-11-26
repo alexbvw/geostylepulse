@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-// import { spotService } from './services/spot.service';
 import { NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
 import { AuthenticationService } from './helper/authentication.service';
 import { RouteService } from './helper/route.service';
-
+import { spotsService } from 'src/app/helper/spots.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,7 +18,7 @@ export class AppComponent {
     private router: Router,
     public routeService: RouteService,
     public authenticationService: AuthenticationService,
-    //  private spotService: spotService,
+     private spotsService: spotsService,
     // private sseService: SseService
     ){
     this.routeService.currentRoute = "";
@@ -39,10 +38,18 @@ export class AppComponent {
     });
   }
 
-  ngOnInit(): void {
-    if(this.authenticationService.isLoggedIn && localStorage.getItem('uuid')){
-      // this.spotService.getspot(localStorage.getItem('uuid'))
+  async ngOnInit() {
+    if(this.authenticationService.isLoggedIn && localStorage.getItem('stylistId')){
+      await this.getStylistSpots()
     }
+  }
+
+  async getStylistSpots(){
+    this.spotsService.getStylistSpots()
+    .then((res:any) => {
+      console.log(res)
+      this.spotsService.spots = res.spots
+    })
   }
 
     
