@@ -1,11 +1,11 @@
 
+import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { LocationService } from 'src/app/helper/location.service';
-import { AuthenticationService } from 'src/app/helper/authentication.service';
-import { jwtDecode } from 'jwt-decode';
 import { spotsService } from '../../helper/spots.service';
+import { LocationService } from 'src/app/helper/location.service';
+import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AuthenticationService } from 'src/app/helper/authentication.service';
 
 @Component({
   selector: 'app-authentication',
