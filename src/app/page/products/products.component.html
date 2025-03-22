@@ -1,0 +1,28 @@
+<!-- <app-header></app-header> -->
+<ion-content>
+
+<span id="product-list">
+    <ion-card
+        id="product" 
+        class="ion-no-padding ion-no-margin"
+        *ngFor="let product of productsService.products">
+
+           <ion-card-header id="product-header">
+                <ion-img [src]="product.image_url"></ion-img>
+                <ion-button id="upload-img-btn" size="small">Upload Image</ion-button>
+           </ion-card-header>
+
+           <ion-card-content>
+               <ion-card-title>{{product.name}}</ion-card-title>
+               <ion-card-subtitle>{{product.description.slice(0, 30)+"..."}}</ion-card-subtitle>
+           </ion-card-content>
+
+           <ion-card-content>
+                <p id="price">R{{product.price.toFixed(2)}}</p>
+                <p id="quantity">{{product.quantity}} left</p>
+           </ion-card-content>
+
+    </ion-card>
+</span>
+
+</ion-content>

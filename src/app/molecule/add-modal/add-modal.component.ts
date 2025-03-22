@@ -1,9 +1,11 @@
 import { Spot } from 'src/app/model/spot';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { spotsService } from 'src/app/helper/spots.service';
+import { SpotsService } from 'src/app/helper/spots.service';
 import { LocationService } from 'src/app/helper/location.service';
 import { ModalController, PopoverController } from '@ionic/angular';
+import { Product } from 'src/app/model/product';
+import { ProductsService } from 'src/app/helper/product.service';
 
 @Component({
   selector: 'app-add-modal',
@@ -11,7 +13,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
   styleUrls: ['./add-modal.component.scss'],
 })
 
-export class AddModalComponent  implements OnInit {
+export class AddModalComponent  {
   addType = localStorage.getItem('addType');
   address = new FormControl('');
   spot: Spot = {
@@ -25,15 +27,26 @@ export class AddModalComponent  implements OnInit {
     active: false,
     radius: 10
   }
+  product: Product = {
+    spot_id: '',
+    price: 0,
+    in_stock: false,
+    image_url: '',
+    stock_count: 0,
+    name: '',
+    category: '',
+    description: ''
+  }
 
   constructor(
     private modalCtrl: ModalController,
-    public spotsService: spotsService,
+    public spotsService: SpotsService,
+    public productsService: ProductsService,
     private popOverCtrl: PopoverController,
     public locationService: LocationService,
   ) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     console.log(this.addType)
     this.address.valueChanges.subscribe(async (value: any) => {
       console.log(value);
@@ -49,6 +62,7 @@ export class AddModalComponent  implements OnInit {
 
   async confirm() {
     if(this.addType == "spot") await this.addSpot(this.spot)
+    if(this.addType == "product") this.product.spot_id = this.spotsService.current_spot?.id ?? "", await this.addProduct(this.product)
     return this.modalCtrl.dismiss('submit'), this.popOverCtrl.dismiss();
   }
 
@@ -79,6 +93,20 @@ export class AddModalComponent  implements OnInit {
       this.spotsService.current_spot_name = this.spotsService.current_spot.name
       console.log(this.spotsService.current_spot_name)
       }
+    })
+  }
+
+  async addProduct(product:any){
+    this.productsService.addProduct(product)
+    .then(async (res:any) => {
+      this.productsService.presentToast(res.message)
+      this.modalCtrl.dismiss('confirm');
+      this.popOverCtrl.dismiss();
+      console.log(res)
+    })
+    .catch((err:any) => {
+      console.log(err)
+      this.productsService.presentToast(err.error.message)
     })
   }
 

@@ -2,7 +2,7 @@
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { spotsService } from '../../helper/spots.service';
+import { SpotsService } from '../../helper/spots.service';
 import { LocationService } from 'src/app/helper/location.service';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/helper/authentication.service';
@@ -36,7 +36,7 @@ export class AuthenticationComponent {
     public fb: FormBuilder,
     public authenticationService: AuthenticationService,
     public locationService: LocationService,
-    private spotsService : spotsService
+    private spotsService : SpotsService
   ) { 
  
   }

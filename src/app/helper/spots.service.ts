@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class spotsService {
+export class SpotsService {
 
   spots:any = [];
   current_spot:any;

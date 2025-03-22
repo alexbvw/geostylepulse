@@ -8,7 +8,7 @@ export class RouteService {
     {
       path: 'spot',
       label: 'spot',
-      icon: 'locate-outline'
+      icon: 'storefront-outline'
     },
     {
       path: 'pulse',

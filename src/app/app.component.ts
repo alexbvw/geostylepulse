@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
 import { AuthenticationService } from './helper/authentication.service';
 import { RouteService } from './helper/route.service';
-import { spotsService } from 'src/app/helper/spots.service';
+import { SpotsService } from 'src/app/helper/spots.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,7 +18,7 @@ export class AppComponent {
     private router: Router,
     public routeService: RouteService,
     public authenticationService: AuthenticationService,
-     private spotsService: spotsService,
+     private spotsService: SpotsService,
     // private sseService: SseService
     ){
     this.routeService.currentRoute = "";

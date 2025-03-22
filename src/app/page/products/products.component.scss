@@ -1,0 +1,32 @@
+#product-list{
+    gap: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent;
+    #product{
+        width: 32%;
+        padding: 0rem 0rem 1rem 0rem;
+        ion-card-header{
+            padding: 0rem 0rem 1rem 0rem;
+        }
+        #price{
+            margin: 0rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        #product-header{
+            ion-img{
+                width: 100%;
+            }
+            #upload-img-btn{
+                top: 1%;
+                right: 1%;
+                position: absolute;
+            }
+        }
+       
+    }
+}

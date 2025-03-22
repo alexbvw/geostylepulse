@@ -20,7 +20,7 @@
         </ion-card>
 
         <ion-list [inset]="true">
-          <ion-item [button]="true" id="navItem" routerActive="active" routerLink={{link.path}}  *ngFor="let link of routeService.navLinks" [style.display]="spotsService.current_spot != null  ? '' : 'none'" [class.active]="link.path === routeService.currentRoute.replace('/', '')">
+          <ion-item [button]="true" id="navItem"  (click)="navigate(link.path)"  *ngFor="let link of routeService.navLinks" [style.display]="spotsService.current_spot != null  ? '' : 'none'" [class.active]="link.path === routeService.currentRoute.replace('/', '')">
             <ion-label>{{link.label}}</ion-label>
             <ion-icon name={{link.icon}} size="medium"></ion-icon>
           </ion-item>

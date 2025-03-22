@@ -9,6 +9,17 @@
         background-color: #5dccff;
     }
 }
+#category{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    #categoryResult{
+        cursor: pointer;
+    }
+    #categoryResult:hover{
+        background-color: #5dccff;
+    }
+}
 #modal-title{
     margin: 0 auto;
     text-align: center;

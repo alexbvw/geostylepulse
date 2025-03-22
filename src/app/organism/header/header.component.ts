@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { RouteService } from 'src/app/helper/route.service';
-import { spotsService } from 'src/app/helper/spots.service';
+import { SpotsService } from 'src/app/helper/spots.service';
 import { AuthenticationService } from 'src/app/helper/authentication.service';
 import { AddModalComponent } from 'src/app/molecule/add-modal/add-modal.component';
 @Component({
@@ -15,7 +15,7 @@ export class HeaderComponent {
     private router: Router,
     public routeService: RouteService,
     public authenticationService: AuthenticationService,
-    public spotsService: spotsService,
+    public spotsService: SpotsService,
     private modalCtrl: ModalController
     // private sseService: SseService
     ){

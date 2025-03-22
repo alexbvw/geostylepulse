@@ -10,16 +10,21 @@ ion-header{
         justify-content: start;
         vertical-align: middle;
         ion-title{
+            font-size: medium;
             max-width: 10rem;
+            margin: auto 0 auto 0;
         }
         ion-icon {
-            margin: 0;
+            margin: auto 0;
             color: #fefefe;
         }
     }
 }
 .spot-select-box{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
     ion-icon{
         cursor: pointer;
         color: #fefefe;
@@ -29,13 +34,14 @@ ion-header{
     .addBtn{
         display: flex;
         padding: 1rem;
+        align-items: center;
         text-align: center;
         justify-content: center;
         ion-icon{
             cursor: pointer;
             color: #fefefe;
             font-size: 2rem;
-            margin: auto 1.25rem auto -0.938rem;
+            margin: auto 0rem auto 0rem;
         }
     }
 }
