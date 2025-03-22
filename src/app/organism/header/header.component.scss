@@ -1,11 +1,41 @@
 ion-header{
+    height: 5rem;
     border-bottom: 1px solid #fefefe;
+    ion-toolbar{
+        padding: 0rem 1rem;
+    }
+    #title{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        vertical-align: middle;
+        ion-title{
+            max-width: 10rem;
+        }
+        ion-icon {
+            margin: 0;
+            color: #fefefe;
+        }
+    }
 }
 .spot-select-box{
     display: flex;
     ion-icon{
         cursor: pointer;
-        font-size: 32px;
-        margin: auto 20px auto -15px;
+        color: #fefefe;
+        font-size: 2rem;
+        margin: auto 1.25rem auto -0.938rem;
+    }
+    .addBtn{
+        display: flex;
+        padding: 1rem;
+        text-align: center;
+        justify-content: center;
+        ion-icon{
+            cursor: pointer;
+            color: #fefefe;
+            font-size: 2rem;
+            margin: auto 1.25rem auto -0.938rem;
+        }
     }
 }

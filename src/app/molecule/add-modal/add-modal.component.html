@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+
+    <ion-title id="modal-title">Add new {{addType}}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-list *ngIf="addType === 'spot'" id="spot-form" lines="full">
+
+    <ion-item>
+      <ion-input label="Spot Name" labelPlacement="floating" placeholder="Spot Name" [(ngModel)]="spot.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <span id="location">
+        <ion-input [formControl]="address" type="text" id="location" name="location" required="" placeholder="Start typing to see results"></ion-input>
+        <span id="addressResult" *ngFor="let addressResult of locationService.results; let i=index" (click)="selectLocation(addressResult.title)">
+            <h4>{{addressResult.title}}</h4>
+        </span>
+      </span>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Radius | {{spot.radius}}KM</ion-label>
+      <ion-range name="radius" color="light" min="10" max="100" [(ngModel)]="spot.radius" aria-label="radius">   
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Open Hour</ion-label>
+      <ion-datetime-button datetime="open_hour"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime presentation="time" id="open_hour" name="open_hour" [(ngModel)]="spot.open_hour" aria-label="open_hour"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Close Hour</ion-label>
+      <ion-datetime-button datetime="close_hour"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime presentation="time" id="close_hour" name="close_hour" [(ngModel)]="spot.close_hour" aria-label="close_hour"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

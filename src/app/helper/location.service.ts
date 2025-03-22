@@ -9,10 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LocationService {
+  addressSelected = false;
   results:any = []
   url = environment.base_url;
-  here_autocomplete_url = environment.here_autocomplete_url;
-  here_geocode_url = environment.here_geocode_url;
   here_api_token = environment.here_token;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -25,7 +24,7 @@ export class LocationService {
   ) { }
 
   searchLocationforLatitudeAndLongitude(search:any){
-    let url = `${this.here_autocomplete_url}autocomplete?in=countryCode:ZAF&q=${search}&apiKey=${this.here_api_token}`
+    let url = `${this.url}api/stylist/address?in=countryCode:ZAF&q=${search}&apiKey=${this.here_api_token}`
     return firstValueFrom(this.http.request(
       `GET`,
       url
@@ -33,7 +32,7 @@ export class LocationService {
   }
 
   getLatitudeAndLongitudeforAddress(address:any){
-    let url = `${this.here_geocode_url}geocode?q=${address}&apiKey=${this.here_api_token}`
+    let url = `${this.url}api/stylist/address-details?q=${address}&apiKey=${this.here_api_token}`
     return firstValueFrom(this.http.request(
       `GET`,
       url

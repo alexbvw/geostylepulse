@@ -29,7 +29,9 @@ export class AppComponent {
 
         if (event instanceof NavigationEnd) {
             this.routeService.currentRoute = event.url;     
+            this.routeService.currentIcon = this.routeService.navLinks.find((x:any) => x.path === this.routeService.currentRoute.replace('/', '')).icon
             console.log(this.routeService.currentRoute)     
+            console.log(this.routeService.currentIcon)     
         }
 
         if (event instanceof NavigationError) {

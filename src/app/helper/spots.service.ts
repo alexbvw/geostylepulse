@@ -66,10 +66,12 @@ export class spotsService {
 
   addSpot(spot:any){
     let url = `${this.baseUrl+this.endpoint}spots`
+    let token = localStorage.getItem('token')
+    this.headers = this.headers.set('Authorization', `Bearer ${token}`);
     return firstValueFrom(this.http.request(
       `POST`,
       url,
-      {body: spot}
+      {headers: this.headers,body: spot}
       ));
   }
 

@@ -1,7 +1,7 @@
 export class Stylist {
     name: String | undefined;
 	phone_number: String | undefined;
-	current_address: String | undefined;
+	address: String | undefined;
 	pin_code: String | undefined;
 	role: String | undefined;
 	active: boolean | undefined;

@@ -23,6 +23,7 @@ import { SettingsComponent } from './page/settings/settings.component';
 import { TutorialsComponent } from './page/tutorials/tutorials.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { AddModalComponent } from './molecule/add-modal/add-modal.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     ArticlesComponent,
     SettingsComponent,
     TutorialsComponent,
+    AddModalComponent,
     AuthenticationComponent,
   ],
   imports: [

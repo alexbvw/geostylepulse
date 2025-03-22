@@ -1,15 +1,53 @@
 <ion-header class="ion-no-border">
+
     <ion-toolbar class="ion-no-border">
-      <ion-title slot="start">{{routeService.currentRoute.replace('/', '')}}</ion-title>
+
+      <span  id="title">
+        <ion-icon name={{routeService.currentIcon}}></ion-icon>
+        <ion-title>{{routeService.currentRoute.replace('/', '')}}</ion-title>
+      </span>
+
       <span class="spot-select-box" slot="end">
+
         <ion-select value={{spotsService.current_spot_name}} [(ngModel)]="spotsService.current_spot_name" (ionChange)='selectionChanged($event)' class="ion-margin" aria-label="Spots" interface="popover" placeholder="Select Spot">
-          <ion-select-option *ngFor="let spot of spotsService.spots" value={{spot.name}}>{{spot.name}}</ion-select-option>
+          <ion-select-option *ngFor="let spot of spotsService.spots" value={{spot.name}}>{{spot.name}} | {{spot.distance}}KM</ion-select-option>
         </ion-select>
         <ion-icon *ngIf="spotsService.current_spot_name != null" name="close-outline" (click)="removeSelection()"></ion-icon>
+
+        <span class="addBtn" id="click-trigger">
+          <ion-icon slot="icon-only"  size="small"  name="add-outline"></ion-icon>
+        </span>
+
+        <ion-popover trigger="click-trigger" triggerAction="click">
+          <ng-template>
+            <ion-content>
+              <ion-list lines="full">
+                <ion-item [button]="true" [detail]="false" (click)="openAddModal('spot')" *ngIf="!this.spotsService.current_spot">Add New Spot</ion-item>
+                <ion-item [button]="true" [detail]="false" (click)="openAddModal('product')" *ngIf="this.spotsService.current_spot">Add New Product</ion-item>
+                <ion-item [button]="true" [detail]="false" (click)="openAddModal('service')" *ngIf="this.spotsService.current_spot">Add New Service</ion-item>
+                <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item> -->
+                <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
+                <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
+                  <ng-template>
+                    <ion-content>
+                      <ion-list>
+                        <ion-item [button]="true" [detail]="false">Nested option</ion-item>
+                      </ion-list>
+                    </ion-content>
+                  </ng-template>
+                </ion-popover> -->
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+
       </span>
+
+
       <ion-buttons class="ion-hide-lg-up" slot="end">
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-buttons>
+      
     </ion-toolbar>
     
   </ion-header>

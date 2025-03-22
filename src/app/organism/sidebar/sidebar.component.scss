@@ -4,8 +4,9 @@
     background-color: #0C0C0C;
     justify-content: center;
 }
+
 #logout-btn{
-    margin: 20px 10px;
+    margin: auto 1rem auto 1rem;
 }
 .list-md{
     padding: 0px;
@@ -13,6 +14,13 @@
 ion-menu{
     border-left: 1px solid #fefefe;
 }
+ion-split-pane{
+    margin: 5rem 0rem 0 0
+}
+.active{
+    --background: #0e0e0e;
+}
+
 #selectSpotMessage{
     text-align: center;
     ion-card-header{
@@ -23,5 +31,10 @@ ion-menu{
     ion-icon{
         margin: 0px auto 10px auto;
         font-size: 62px
+    }
+}
+@media screen and (max-width: 767px) {
+    ion-menu{
+        border-left: none;
     }
 }

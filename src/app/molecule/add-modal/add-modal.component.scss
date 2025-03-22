@@ -1,0 +1,16 @@
+#location{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    #addressResult{
+        cursor: pointer;
+    }
+    #addressResult:hover{
+        background-color: #5dccff;
+    }
+}
+#modal-title{
+    margin: 0 auto;
+    text-align: center;
+    font-size: smaller;
+}

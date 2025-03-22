@@ -1,5 +1,6 @@
 <div *ngIf="authenticationService?.isLoggedIn && !routeService.currentRoute.includes('appchat')" class="container-fluid" id="page">
     <ion-app>
+        <app-header></app-header>
         <app-sidebar></app-sidebar>
       </ion-app>
 </div>

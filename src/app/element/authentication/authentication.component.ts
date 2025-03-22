@@ -15,7 +15,7 @@ import { AuthenticationService } from 'src/app/helper/authentication.service';
 export class AuthenticationComponent {
   RegisterForm: FormGroup | any;
   address = new FormControl('');
-  addressSelected = false;
+
   authenticationToggle = false;
   stylist_name : any;
   location : any;
@@ -80,7 +80,7 @@ export class AuthenticationComponent {
     let stylist = {
       "name": this.stylist_name, 
       "phone_number": this.phone_number, 
-      "current_address": this.location, 
+      "address": this.location, 
       "pin_code": this.pin_code, 
       "role": "STYLIST", 
       "active": false, 
@@ -156,7 +156,7 @@ async searchAddress(address:any){
        this.longitude = await this.locationService.selectedLocation.position.lng
        this.location = await this.locationService.selectedLocation.address.label
        this.address.setValue(this.location)
-       this.addressSelected = true;
+       this.locationService.addressSelected = true;
      }
     })
     .catch((err:any) => {
