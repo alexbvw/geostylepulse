@@ -1,4 +1,5 @@
 <ion-header>
+
   <ion-toolbar>
 
     <ion-buttons slot="start">
@@ -12,16 +13,18 @@
     </ion-buttons>
 
   </ion-toolbar>
+
 </ion-header>
+
 <ion-content class="ion-padding">
 
   <ion-list *ngIf="addType === 'spot'" id="spot-form" lines="full">
 
-    <ion-item>
+    <ion-item id="spot-name">
       <ion-input label="Spot Name" labelPlacement="floating" placeholder="Spot Name" [(ngModel)]="spot.name"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item id="address">
       <span id="location">
         <ion-input [formControl]="address" type="text" id="location" name="location" required="" placeholder="Search Address by Typing here..."></ion-input>
         <span id="addressResult" *ngFor="let addressResult of locationService.results; let i=index" (click)="selectLocation(addressResult.title)">
@@ -30,16 +33,15 @@
       </span>
     </ion-item>
 
-    <ion-item>
+    <ion-item id="radius">
       <ion-label>Radius | {{spot.radius}}KM</ion-label>
       <ion-range name="radius" color="light" min="10" max="100" [(ngModel)]="spot.radius" aria-label="radius">   
       </ion-range>
     </ion-item>
 
-    <ion-item>
+    <ion-item id="open-hour">
       <ion-label>Open Hour</ion-label>
       <ion-datetime-button datetime="open_hour"></ion-datetime-button>
-
       <ion-modal [keepContentsMounted]="true">
         <ng-template>
           <ion-datetime presentation="time" id="open_hour" name="open_hour" [(ngModel)]="spot.open_hour" aria-label="open_hour"></ion-datetime>
@@ -47,10 +49,9 @@
       </ion-modal>
     </ion-item>
 
-    <ion-item>
+    <ion-item id="close-hour">
       <ion-label>Close Hour</ion-label>
       <ion-datetime-button datetime="close_hour"></ion-datetime-button>
-
       <ion-modal [keepContentsMounted]="true">
         <ng-template>
           <ion-datetime presentation="time" id="close_hour" name="close_hour" [(ngModel)]="spot.close_hour" aria-label="close_hour"></ion-datetime>
@@ -60,37 +61,32 @@
 
   </ion-list>
 
-
   <ion-list *ngIf="addType === 'product'" id="item-form" lines="full">
     
-    <ion-item>
-      <ion-input label="Product Name" labelPlacement="floating" placeholder="Product Name" [(ngModel)]="product.name"></ion-input>
+    <ion-item id="product-name">
+      <ion-input name="name" type="text" label="Product Name" labelPlacement="floating" placeholder="Product Name" [(ngModel)]="product.name"></ion-input>
     </ion-item>
 
-    <ion-item>
-
-        <ion-select id="category" labelPlacement="floating" label="Select Product Category" aria-label="Product Category" interface="popover" placeholder="Product Category" [(ngModel)]="product.category">
+    <ion-item id="product-category">
+        <ion-select name="category" id="category" labelPlacement="floating" label="Select Product Category" aria-label="Product Category" interface="popover" placeholder="Product Category" [(ngModel)]="product.category">
           <ion-select-option value="apples">Styling</ion-select-option>
           <ion-select-option value="oranges">Cleaning</ion-select-option>
           <ion-select-option value="bananas">Other</ion-select-option>
         </ion-select>
+    </ion-item>
 
-      <!-- <ion-input label="Product Category" placeholder="Product Category" [(ngModel)]="product.category"></ion-input> -->
+    <ion-item id="product-description">
+      <ion-input name="description" type="text" label="Product Description" labelPlacement="floating" placeholder="Product Description" [(ngModel)]="product.description"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Product Description" labelPlacement="floating" placeholder="Product Description" [(ngModel)]="product.description"></ion-input>
+      <ion-input name="price" type="number" label="Product Price" labelPlacement="floating" placeholder="Product Price" [(ngModel)]="product.price"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="number" label="Product Price" labelPlacement="floating" placeholder="Product Price" [(ngModel)]="product.price"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="number" label="Product Quantity" labelPlacement="floating" placeholder="Product Quantity" [(ngModel)]="product.stock_count"></ion-input>
+      <ion-input name="stock_count" type="number" label="Product Quantity" labelPlacement="floating" placeholder="Product Quantity" [(ngModel)]="product.stock_count"></ion-input>
     </ion-item>
 
   </ion-list>
-
 
 </ion-content>

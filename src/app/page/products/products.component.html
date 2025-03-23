@@ -5,11 +5,24 @@
     <ion-card
         id="product" 
         class="ion-no-padding ion-no-margin"
-        *ngFor="let product of productsService.products">
-
-           <ion-card-header id="product-header">
-                <ion-img [src]="product.image_url"></ion-img>
-                <ion-button id="upload-img-btn" size="small">Upload Image</ion-button>
+        *ngFor="let product of productsService.products; let i = index">
+           <ion-card-header id="product-header" class="ion-no-margin ion-no-padding">
+                <ion-img (click)="editProduct(product)"  [src]="product.image_url"></ion-img>
+            <span id="btn-wrapper">
+                <ion-button id="edit-btn" size="small" (click)="editProduct(product)" >Edit</ion-button>
+                <ion-button id="delete-btn" size="small" id="{{i}}-deleteProduct">Delete Product</ion-button>
+                <ion-popover [dismissOnSelect]="true" trigger="{{i}}-deleteProduct" triggerAction="click" side="bottom" size="auto">
+                    <ng-template>
+                        <ion-list lines="full">
+                            <ion-item color="danger" [button]="true" [detail]="false" (click)="deleteProduct(product)">Confirm Delete</ion-item>
+                            <ion-item [button]="true" [detail]="false">Cancel</ion-item>
+                        </ion-list>
+                    </ng-template>
+                </ion-popover>
+                <ion-button *ngIf="product.image_url === 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'" id="upload-img-btn" size="small" (click)="selectImage(product)" >Upload Image</ion-button>
+                <ion-button *ngIf="product.image_url !== 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'" id="upload-img-btn" size="small" (click)="deleteImage(product)" >Remove Image</ion-button>
+                <input [hidden]="true" type="file" #file id="file" name="file" multiple="multiple" accept="image/*" />
+            </span>
            </ion-card-header>
 
            <ion-card-content>
@@ -19,7 +32,7 @@
 
            <ion-card-content>
                 <p id="price">R{{product.price.toFixed(2)}}</p>
-                <p id="quantity">{{product.quantity}} left</p>
+                <p id="quantity">{{product.stock_count}} left</p>
            </ion-card-content>
 
     </ion-card>

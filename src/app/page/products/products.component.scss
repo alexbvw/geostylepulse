@@ -20,11 +20,25 @@
         #product-header{
             ion-img{
                 width: 100%;
+                cursor: pointer;
             }
-            #upload-img-btn{
-                top: 1%;
+            #btn-wrapper{
+                bottom: 4%;
                 right: 1%;
                 position: absolute;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #upload-img-btn{
+                position: relative;
+            }
+            #edit-btn{
+                position: relative;
+            }
+            #delete-btn{
+                position: relative;
             }
         }
        

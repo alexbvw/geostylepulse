@@ -1,19 +1,21 @@
-<ion-header class="ion-no-border">
+<ion-header id="header" class="ion-no-border">
 
-    <ion-toolbar class="ion-no-border">
+    <ion-toolbar id="toolbar" class="ion-no-border">
 
-      <span  id="title">
+      <span id="title" slot="start">
         <ion-icon name={{routeService.currentIcon}}></ion-icon>
         <ion-title>{{routeService.currentRoute.replace('/', '')}}</ion-title>
       </span>
 
-      <span class="spot-select-box" slot="end">
+      <span id="spot-select-box" slot="end">
 
-        <ion-select value={{spotsService.current_spot_name}} [(ngModel)]="spotsService.current_spot_name" (ionChange)='selectionChanged($event)' class="ion-margin" aria-label="Spots" interface="popover" placeholder="Select Spot">
-          <ion-select-option *ngFor="let spot of spotsService.spots" value={{spot.name}}>{{spot.name}} | {{spot.distance}}KM</ion-select-option>
-        </ion-select>
-        <ion-icon *ngIf="spotsService.current_spot_name != null" name="close-outline" (click)="removeSelection()"></ion-icon>
-        
+        <span id="spot-select">
+          <ion-select value={{spotsService.current_spot_name}} [(ngModel)]="spotsService.current_spot_name" (ionChange)='selectionChanged($event)' class="ion-margin" aria-label="Spots" interface="popover" placeholder="Select Spot">
+            <ion-select-option *ngFor="let spot of spotsService.spots" value={{spot.name}}>{{spot.name}} | {{spot.distance}}KM</ion-select-option>
+          </ion-select>
+          <ion-icon *ngIf="spotsService.current_spot_name != null" name="close-outline" (click)="removeSelection()"></ion-icon>
+        </span>
+
         <span class="addBtn" id="click-trigger">
           <ion-icon slot="icon-only"  size="medium"  name="add-outline"></ion-icon>
         </span>

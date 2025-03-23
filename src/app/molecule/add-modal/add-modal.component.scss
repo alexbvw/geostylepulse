@@ -20,6 +20,24 @@
         background-color: #5dccff;
     }
 }
+#product-image{
+  #image-wrap{
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    img{
+        width: 5rem;
+        height: 5rem;
+    }
+    ion-button{
+        right: 0;
+        bottom: 0;
+        position: absolute;
+    }
+  }
+}
 #modal-title{
     margin: 0 auto;
     text-align: center;

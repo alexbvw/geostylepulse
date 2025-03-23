@@ -1,11 +1,12 @@
 import { Spot } from 'src/app/model/spot';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/model/product';
 import { SpotsService } from 'src/app/helper/spots.service';
+import { ProductsService } from 'src/app/helper/product.service';
 import { LocationService } from 'src/app/helper/location.service';
 import { ModalController, PopoverController } from '@ionic/angular';
-import { Product } from 'src/app/model/product';
-import { ProductsService } from 'src/app/helper/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-modal',
@@ -14,8 +15,10 @@ import { ProductsService } from 'src/app/helper/product.service';
 })
 
 export class AddModalComponent  {
+
   addType = localStorage.getItem('addType');
   address = new FormControl('');
+
   spot: Spot = {
     name: '',
     latitude: 0,
@@ -27,18 +30,22 @@ export class AddModalComponent  {
     active: false,
     radius: 10
   }
+
   product: Product = {
     spot_id: '',
     price: 0,
     in_stock: false,
-    image_url: '',
+    image_url: 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930',
     stock_count: 0,
     name: '',
     category: '',
     description: ''
   }
 
+
+
   constructor(
+    private routerService: Router,
     private modalCtrl: ModalController,
     public spotsService: SpotsService,
     public productsService: ProductsService,
@@ -103,12 +110,27 @@ export class AddModalComponent  {
       this.modalCtrl.dismiss('confirm');
       this.popOverCtrl.dismiss();
       console.log(res)
+      await this.getSpotProducts();
     })
     .catch((err:any) => {
       console.log(err)
       this.productsService.presentToast(err.error.message)
     })
   }
+
+  async getSpotProducts(){
+    this.productsService.getSpotProducts(this.spotsService.current_spot.id)
+    .then(async (res:any) => {
+      for(let [productIndex, product] of res.products.entries()) {
+        if(product.image_url == "" || product.image_url == null) product.image_url = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'
+      }
+      this.productsService.products = await res.products
+      this.routerService.navigate(['products'])
+    })
+    .catch((err:any) => {
+      console.log(err)
+    })
+   }
 
   async searchAddress(address:any){
     this.locationService.searchLocationforLatitudeAndLongitude(address)

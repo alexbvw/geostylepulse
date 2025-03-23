@@ -24,6 +24,7 @@ import { TutorialsComponent } from './page/tutorials/tutorials.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { AddModalComponent } from './molecule/add-modal/add-modal.component';
+import { ProductComponent } from './page/single/product/product.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AddModalComponent } from './molecule/add-modal/add-modal.component';
     SidebarComponent,
     ChatBoxComponent,
     ServicesComponent,
+    ProductComponent,
     ProductsComponent,
     BookingsComponent,
     ArticlesComponent,

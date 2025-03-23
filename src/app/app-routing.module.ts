@@ -13,6 +13,7 @@ import { BookingsComponent } from './page/bookings/bookings.component';
 import { OrdersComponent } from './page/orders/orders.component';
 import { SettingsComponent } from './page/settings/settings.component';
 import { SpotComponent } from './page/spot/spot.component';
+import { ProductComponent } from './page/single/product/product.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'pulse', component: PulseComponent , canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent , canActivate: [AuthGuard] },
   { path: 'products', component: ProductsComponent , canActivate: [AuthGuard] },
+  { path: 'product/:name', component: ProductComponent , canActivate: [AuthGuard] },
   { path: 'services', component: ServicesComponent , canActivate: [AuthGuard] },
   { path: 'bookings', component: BookingsComponent , canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent , canActivate: [AuthGuard] },

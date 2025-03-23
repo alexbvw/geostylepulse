@@ -13,21 +13,9 @@ export class ProductsService {
   products:any = [];
   current_product:any;
   current_product_name:any;
+  
   productLoading = true;
   productsLoading = true;
-
-  name:any;
-  images:any;
-  radius:any;
-  address:any;
-  stylist_id:any;
-  latitude:any;
-  longitude:any;
-  open_hour:any;
-  close_hour:any;
-  stylist_ids:any;
-  customer_ids:any;
-  active:boolean = false;
 
   endpoint = 'api/stylist/'
   baseUrl = environment.base_url;
@@ -73,22 +61,51 @@ export class ProductsService {
       {headers: this.headers,body: product}
       ));
   }
+  
+  uploadProductImage(product_id:any, image:any){
+    let url = `${this.baseUrl+this.endpoint}product-image/${product_id}`
+    let token = localStorage.getItem('token')
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    headers.set('Content-Type', 'multipart/form-data');
+    let body = new FormData();
+    body.append('image', image);
+    return firstValueFrom(this.http.request(
+      `POST`,
+      url,
+      {headers: headers, body: body}
+    ));
+  }
+
+  deleteProductImage(product:any, fileName:any){
+    let url = `${this.baseUrl+this.endpoint}product-image/${product.id}/${fileName}`
+    let token = localStorage.getItem('token')
+    this.headers = this.headers.set('Authorization', `Bearer ${token}`);
+    return firstValueFrom(this.http.request(
+      `DELETE`,
+      url,
+      {headers: this.headers}
+    ));
+  }
 
   updateProduct(product:any){
-    let product_id =  localStorage.getItem("productId")
-    let url = `${this.baseUrl+this.endpoint}${product_id}`
+    let url = `${this.baseUrl+this.endpoint}${product.id}`
+    let token = localStorage.getItem('token')
+    this.headers = this.headers.set('Authorization', `Bearer ${token}`);
     return firstValueFrom(this.http.request(
       `PUT`,
       url,
-      {body: product}
+      {headers: this.headers, body: product}
       ));
   }
 
   deleteProduct(product_id:any){
     let url = `${this.baseUrl+this.endpoint}product/${product_id}`
+    let token = localStorage.getItem('token')
+    this.headers = this.headers.set('Authorization', `Bearer ${token}`);
     return firstValueFrom(this.http.request(
       `DELETE`,
-      url
+      url,
+      {headers: this.headers}
     ));
   }
 
