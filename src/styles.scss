@@ -1,49 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-    font-family: "SoraLight";
-    src: local("SoraBold"), url('./assets/fonts/SoraLight.ttf') format("truetype");
-}
-@font-face {
-    font-family: "SoraRegular";
-    src: local("SoraRegular"), url('./assets/fonts/SoraRegular.ttf') format("truetype");
-}
-@font-face {
-    font-family: "SoraBold";
-    src: local("SoraBold"), url('./assets/fonts/SoraBold.ttf') format("truetype");
+    font-family: "PlusJakartaSans";
+    src: local("PlusJakartaSans"), url('./assets/fonts/PlusJakartaSans.ttf') format("truetype");
 }
 
 * {
-    font-family: 'SoraLight';
+    font-family: 'PlusJakartaSans';
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PlusJakartaSans';
+}
+
+h1{
+   font-size: var(--h1-font-size)!important;
+}
+
+h2{
+    font-size: var(--h2-font-size)!important;
+}
+
+h3{
+    font-size: var(--h3-font-size)!important;
+}
+
+h4{
+    font-size: var(--h4-font-size)!important;
+}
+
+h5{
+    font-size: var(--h5-font-size)!important;
+}
+
+h6{
+    font-size: var(--h6-font-size)!important; 
+}
+
+p{
+    margin: 0px;
+    line-height: 100%!important;
+    font-family: 'PlusJakartaSans';
+    font-size: var(--body-font-size)!important;
 }
 
 body {
-    font-family: 'SoraRegular';
+    margin: 0;
+    line-height: auto;
+    font-family: 'PlusJakartaSans';
+    font-size: var(--body-font-size)!important;
 }   
 
-h1, h2, h3 {
-    font-family: 'SoraBold';
-}
-
-h4, h5, h6 {
-    font-family: 'SoraLight';
+label {
+    font-family: 'PlusJakartaSans';
 }
 
 :root{
     ion-label.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
-        font-family: 'SoraLight';
+        font-family: 'PlusJakartaSans';
+    }
+    ion-card{
+        border-radius: var(--default-border-radius)!important;
     }
     ion-button{
         text-transform: lowercase;
+        --border-radius: var(--extra-small-border-radius)!important;
     }
 }
 
-label {
-    font-family: 'SoraLight';
-}
 .header-md{
     box-shadow: none!important;
     -webkit-box-shadow: none!important;
 }
 .list-md{
     padding: 0;
+}
+
+#fab ion-fab-button{
+    --border-radius: var(--default-border-radius)!important;
 }

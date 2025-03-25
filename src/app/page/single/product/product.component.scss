@@ -1,0 +1,90 @@
+#product-detail{
+    height: auto;
+    display: flex;
+    padding: 2rem;
+    align-self: stretch;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    #product-header{
+        height: 15rem;
+        aspect-ratio: 1/1;
+        #product-image{
+            // height: 100%;
+            // width: 100%;
+        }
+    }
+    #product-content{
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        border-left: 0.065rem solid #fefefe;
+        #name{
+            font-weight: 600;
+            font-size: 2.5rem;
+            #edit-icon{
+                cursor: pointer;
+                font-size: 1.5rem;
+            }
+        }
+        #description{
+            margin: 0rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        #price{
+            margin: 0rem;
+            font-weight: 600;
+            font-size: 3.25rem;
+        }
+        #quantity{
+            margin: 0rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #product-detail{
+        flex-direction: column;
+        height: 100%;
+        #product-header{
+            height: 15rem;
+            aspect-ratio: 1/1;
+            #product-image{
+                // height: 100%;
+                // width: 100%;
+            }
+        }
+        #product-content{
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            border-left: 0.065rem solid #fefefe;
+            #name{
+                font-weight: 600;
+                font-size: 2.5rem;
+                #edit-icon{
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                }
+            }
+            #description{
+                margin: 0rem;
+                font-weight: 600;
+                font-size: 1.25rem;
+            }
+            #price{
+                margin: 0rem;
+                font-weight: 600;
+                font-size: 3.25rem;
+            }
+            #quantity{
+                margin: 0rem;
+                font-weight: 600;
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

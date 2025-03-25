@@ -1,7 +1,7 @@
-import { SpotsService } from 'src/app/helper/spots.service';
-import { ProductsService } from 'src/app/helper/product.service';
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { SpotService } from 'src/app/helper/spots.service';
+import { ProductService } from 'src/app/helper/product.service';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-products',
@@ -14,25 +14,25 @@ export class ProductsComponent  {
   fileToUpload: File | null = null;
   constructor(
     private routerService: Router,
-    public spotsService: SpotsService,
-    public productsService: ProductsService,
+    public spotService: SpotService,
+    public productService: ProductService,
   ) {
 
    }
 
    async ionViewWillEnter() {
-    this.spotsService.current_spot = await JSON.parse(localStorage.getItem("currentSpot") ?? "")
+    this.spotService.current_spot = await JSON.parse(localStorage.getItem("currentSpot") ?? "")
     await this.getSpotProducts()
    }
 
    async getSpotProducts(){
-    this.productsService.getSpotProducts(this.spotsService.current_spot.id)
+    this.productService.getSpotProducts(this.spotService.current_spot.id)
     .then(async (res:any) => {
       for(let [productIndex, product] of res.products.entries()) {
         if(product.image_url == "" || product.image_url == null) product.image_url = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930'
       }
-      this.productsService.products = await res.products
-      console.log(this.productsService.products)
+      this.productService.products = await res.products
+      console.log(this.productService.products)
     })
     .catch((err:any) => {
       console.log(err)
@@ -49,7 +49,7 @@ export class ProductsComponent  {
   }
   
   async uploadImage(product:any, file: any) {
-    this.productsService.uploadProductImage(product.id, file)
+    this.productService.uploadProductImage(product.id, file)
     .then(async (res:any) => {
       console.log(res)
       await this.getSpotProducts()
@@ -61,7 +61,7 @@ export class ProductsComponent  {
 
   async deleteImage(product:any){
     let fileName = product.image_url.split('/').pop();
-    this.productsService.deleteProductImage(product, fileName)
+    this.productService.deleteProductImage(product, fileName)
     .then(async (res:any) => {
       console.log(res)
       await this.getSpotProducts()
@@ -72,11 +72,11 @@ export class ProductsComponent  {
   }
 
   async deleteProduct(product:any){
-    this.productsService.deleteProduct(product.id)
+    this.productService.deleteProduct(product.id)
     .then(async (res:any) => {
       console.log(res)
       await this.getSpotProducts()
-      await this.productsService.presentToast(res.message)
+      await this.productService.presentToast(res.message)
     })
     .catch((err:any) => {
       console.log(err)
@@ -84,11 +84,13 @@ export class ProductsComponent  {
   }
 
   async editProduct(product:any){
-   await this.routerService.navigate([`product/${product.name.replace(/\s+/g, '-').toLowerCase()}`]);
+    this.productService.current_product = product
+    localStorage.setItem("currentProduct", JSON.stringify(product))
+    await this.routerService.navigate([`product/${product.name.replace(/\s+/g, '-').toLowerCase()}`]);
   }
 
    async ngOnDestroy () {
-    this.productsService.products = []
+    this.productService.products = []
    }
 
 }

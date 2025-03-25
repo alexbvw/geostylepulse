@@ -11,7 +11,7 @@ export class RouteService {
       icon: 'storefront-outline'
     },
     {
-      path: 'pulse',
+      path: '',
       label: 'pulse',
       icon: 'pulse-outline'
     },

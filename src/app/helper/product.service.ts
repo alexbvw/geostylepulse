@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class ProductService {
 
   products:any = [];
   current_product:any;

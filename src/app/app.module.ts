@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { AddModalComponent } from './molecule/add-modal/add-modal.component';
 import { ProductComponent } from './page/single/product/product.component';
+import { AuthInterceptor } from './helper/interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ProductComponent } from './page/single/product/product.component';
     NgxMaskPipe,
   ],
   providers: [
-    provideNgxMask()
+    provideNgxMask(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

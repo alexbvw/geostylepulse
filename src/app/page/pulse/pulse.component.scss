@@ -1,0 +1,11 @@
+#pulse{
+    #pulse-content{
+    display: grid;
+    padding: 1rem;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    #pulse-card{
+        width: auto;
+    }
+}
+}

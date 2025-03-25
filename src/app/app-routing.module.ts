@@ -18,14 +18,14 @@ import { ProductComponent } from './page/single/product/product.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pulse',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
     path: 'authenticate', component: AuthenticationComponent
   },
   { path: 'spot', component: SpotComponent , canActivate: [AuthGuard] },
-  { path: 'pulse', component: PulseComponent , canActivate: [AuthGuard] },
+  { path: '', component: PulseComponent , canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent , canActivate: [AuthGuard] },
   { path: 'products', component: ProductsComponent , canActivate: [AuthGuard] },
   { path: 'product/:name', component: ProductComponent , canActivate: [AuthGuard] },

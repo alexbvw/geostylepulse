@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/helper/authentication.service';
-import { SpotsService } from '../../helper/spots.service';
+import { SpotService } from '../../helper/spots.service';
 import { RouteService } from 'src/app/helper/route.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
 
-    constructor(public router: Router, public authenticationService: AuthenticationService, public spotsService: SpotsService, public routeService: RouteService) {
+    constructor(public router: Router, public authenticationService: AuthenticationService, public spotService: SpotService, public routeService: RouteService) {
       
     } 
 

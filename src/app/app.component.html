@@ -10,8 +10,8 @@
 <!-- <span id="overlay" *ngIf="chat_active" (click)="toggleChat()"></span> -->
 <!-- <app-chatroom  *ngIf="chat_active" id="chat-box"></app-chatroom> -->
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="authenticationService?.isLoggedIn && !routeService.currentRoute.includes('appchat')" (click)="toggleChat()">
-<ion-fab-button id="fab">
+<ion-fab id="fab" vertical="bottom" horizontal="end" slot="fixed" *ngIf="authenticationService?.isLoggedIn && !routeService.currentRoute.includes('appchat')" (click)="toggleChat()">
+<ion-fab-button>
   <ion-icon name="chatbubbles-outline" *ngIf="!chat_active"></ion-icon>
   <ion-icon name="close-outline" *ngIf="chat_active"></ion-icon>
 </ion-fab-button>

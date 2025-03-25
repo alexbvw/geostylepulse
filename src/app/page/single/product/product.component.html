@@ -1,3 +1,21 @@
-<p>
-  product works!
-</p>
+<ion-content>
+
+    <ion-card id="product-detail" class="ion-margin ion-no-padding">
+
+        <ion-card-header id="product-header" class="ion-no-margin ion-no-padding">
+            <ion-img id="product-image" [src]="productService.current_product?.image_url"></ion-img>
+        </ion-card-header>
+
+        <ion-card-content id="product-content" class="ion-no-margin ion-no-padding">
+            <ion-card-title id="name">{{productService.current_product?.name}} <ion-icon id="edit-icon" name="pencil"></ion-icon></ion-card-title>
+            <ion-card-subtitle id="description">{{productService.current_product?.description}}</ion-card-subtitle>
+        </ion-card-content>
+
+        <ion-card-content id="product-content" class="ion-no-margin ion-no-padding">
+            <p id="price">R{{productService.current_product?.price.toFixed(2)}}</p>
+            <p id="quantity">{{productService.current_product?.stock_count}} left</p>
+        </ion-card-content>
+
+    </ion-card>
+
+</ion-content>

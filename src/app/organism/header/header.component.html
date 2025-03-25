@@ -2,6 +2,10 @@
 
     <ion-toolbar id="toolbar" class="ion-no-border">
 
+      <span id="logoHolder" slot="start" routerLink="/">
+        <img id="logo" src="../../../assets/logo.svg" alt="">
+      </span>
+
       <span id="title" slot="start">
         <ion-icon name={{routeService.currentIcon}}></ion-icon>
         <ion-title>{{routeService.currentRoute.replace('/', '')}}</ion-title>
@@ -10,10 +14,10 @@
       <span id="spot-select-box" slot="end">
 
         <span id="spot-select">
-          <ion-select value={{spotsService.current_spot_name}} [(ngModel)]="spotsService.current_spot_name" (ionChange)='selectionChanged($event)' class="ion-margin" aria-label="Spots" interface="popover" placeholder="Select Spot">
-            <ion-select-option *ngFor="let spot of spotsService.spots" value={{spot.name}}>{{spot.name}} | {{spot.distance}}KM</ion-select-option>
+          <ion-select value={{spotService.current_spot_name}} [(ngModel)]="spotService.current_spot_name" (ionChange)='selectionChanged($event)' class="ion-margin" aria-label="Spots" interface="popover" placeholder="Select Spot">
+            <ion-select-option *ngFor="let spot of spotService.spots" value={{spot.name}}>{{spot.name}} | {{spot.distance}}KM</ion-select-option>
           </ion-select>
-          <ion-icon *ngIf="spotsService.current_spot_name != null" name="close-outline" (click)="removeSelection()"></ion-icon>
+          <ion-icon *ngIf="spotService.current_spot_name != null" name="close-outline" (click)="removeSelection()"></ion-icon>
         </span>
 
         <span class="addBtn" id="click-trigger">
@@ -24,9 +28,9 @@
           <ng-template>
             <ion-content>
               <ion-list lines="full">
-                <ion-item [button]="true" [detail]="false" (click)="openAddModal('spot')" *ngIf="!this.spotsService.current_spot">Add New Spot</ion-item>
-                <ion-item [button]="true" [detail]="false" (click)="openAddModal('product')" *ngIf="this.spotsService.current_spot">Add New Product</ion-item>
-                <ion-item [button]="true" [detail]="false" (click)="openAddModal('service')" *ngIf="this.spotsService.current_spot">Add New Service</ion-item>
+                <ion-item [button]="true" [detail]="false" (click)="openAddModal('spot')" *ngIf="!this.spotService.current_spot">Add New Spot</ion-item>
+                <ion-item [button]="true" [detail]="false" (click)="openAddModal('product')" *ngIf="this.spotService.current_spot">Add New Product</ion-item>
+                <ion-item [button]="true" [detail]="false" (click)="openAddModal('service')" *ngIf="this.spotService.current_spot">Add New Service</ion-item>
                 <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item> -->
                 <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
                 <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">

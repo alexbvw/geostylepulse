@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouteService } from './helper/route.service';
-import { SpotsService } from 'src/app/helper/spots.service';
+import { SpotService } from 'src/app/helper/spots.service';
 import { AuthenticationService } from './helper/authentication.service';
 import { NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     public routeService: RouteService,
-    private spotsService: SpotsService,
+    private spotService: SpotService,
     public authenticationService: AuthenticationService,
     // private sseService: SseService
     ){
@@ -23,7 +23,10 @@ export class AppComponent {
         if (event instanceof NavigationStart) {window.scroll(0,0)}
         if (event instanceof NavigationEnd) {
             this.routeService.currentRoute = event.url;     
+            if(this.routeService.currentRoute.includes('/product/')) this.routeService.currentRoute = '/products'
+            if(this.routeService.currentRoute.includes('/service/')) this.routeService.currentRoute = '/services'
             this.routeService.currentIcon = this.routeService.navLinks.find((x:any) => x.path === this.routeService.currentRoute.replace('/', ''))?.icon
+            if(this.routeService.currentRoute == '/') this.routeService.currentRoute = '/pulse', this.routeService.currentIcon = 'pulse-outline'
         }
         if (event instanceof NavigationError) {}
     });
@@ -36,12 +39,12 @@ export class AppComponent {
   }
 
   async getStylistSpots(){
-    this.spotsService.getStylistSpots()
+    this.spotService.getStylistSpots()
     .then((res:any) => {
-      this.spotsService.spots = res.spots
+      this.spotService.spots = res.spots
       if(localStorage.getItem("currentSpot") && localStorage.getItem("currentSpot") != "null"){
-        this.spotsService.current_spot = JSON.parse(localStorage.getItem("currentSpot") ?? "")
-        this.spotsService.current_spot_name = this.spotsService.current_spot.name
+        this.spotService.current_spot = JSON.parse(localStorage.getItem("currentSpot") ?? "")
+        this.spotService.current_spot_name = this.spotService.current_spot.name
       }
     })
     .catch((err:any) => {

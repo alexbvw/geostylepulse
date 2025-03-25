@@ -10,12 +10,20 @@
 }
 .list-md{
     padding: 0px;
+    border-radius: 1.25rem;
 }
 ion-menu{
-    border-left: 0.085rem solid #fefefe;
+    border-left: 0.065rem solid #fefefe;
 }
 ion-split-pane{
     margin: 5rem 0rem 0 0
+}
+#navItem{
+    ion-icon{
+        // margin: 0px auto 10px auto;
+        // font-size: 62px;
+        color: #fefefe
+    }
 }
 .active{
     --background: #0e0e0e;

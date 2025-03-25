@@ -4,13 +4,14 @@
         <span class="stylist-info">
             <ion-avatar>
                 <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                
               </ion-avatar>
         </span>
     
       </ion-header>
       <ion-content>
 
-        <ion-card id="selectSpotMessage" [style.display]="spotsService.current_spot != null  ? 'none' : ''">
+        <ion-card id="selectSpotMessage" [style.display]="spotService.current_spot != null  ? 'none' : ''">
 
         <ion-card-header>
           <ion-icon name="location-outline"></ion-icon>
@@ -20,13 +21,13 @@
         </ion-card>
 
         <ion-list [inset]="true">
-          <ion-item [button]="true" id="navItem"  (click)="navigate(link.path)"  *ngFor="let link of routeService.navLinks" [style.display]="spotsService.current_spot != null  ? '' : 'none'" [class.active]="link.path === routeService.currentRoute.replace('/', '')">
+          <ion-item [button]="true" id="navItem"  (click)="navigate(link.path)"  *ngFor="let link of routeService.navLinks" [style.display]="spotService.current_spot != null  ? '' : 'none'" [class.active]="link.path === routeService.currentRoute.replace('/', '')">
             <ion-label>{{link.label}}</ion-label>
             <ion-icon name={{link.icon}} size="medium"></ion-icon>
           </ion-item>
         </ion-list>
 
-        <ion-button id="logout-btn" (click)="authenticationService.logout()" expand="full">logout</ion-button>
+        <ion-button color="tertiary" id="logout-btn" (click)="authenticationService.logout()" expand="block">logout</ion-button>
 
       </ion-content>
 

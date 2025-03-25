@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { RouteService } from 'src/app/helper/route.service';
-import { SpotsService } from 'src/app/helper/spots.service';
+import { SpotService } from 'src/app/helper/spots.service';
 import { AuthenticationService } from 'src/app/helper/authentication.service';
 import { AddModalComponent } from 'src/app/molecule/add-modal/add-modal.component';
 @Component({
@@ -15,7 +15,7 @@ export class HeaderComponent {
     private router: Router,
     public routeService: RouteService,
     public authenticationService: AuthenticationService,
-    public spotsService: SpotsService,
+    public spotService: SpotService,
     private modalCtrl: ModalController
     // private sseService: SseService
     ){
@@ -29,13 +29,13 @@ export class HeaderComponent {
     }
 
     selectionChanged(data:any){
-      for(let [spotIndex, spot] of this.spotsService.spots.entries()) {
+      for(let [spotIndex, spot] of this.spotService.spots.entries()) {
         if(spot.name == data.detail.value){
-          this.spotsService.current_spot = spot
+          this.spotService.current_spot = spot
           localStorage.setItem("currentSpot", JSON.stringify(spot))
         }
       }
-      console.log(this.spotsService.current_spot)
+      console.log(this.spotService.current_spot)
     }
     
     async openAddModal(type:any) {
@@ -48,8 +48,8 @@ export class HeaderComponent {
 
     async removeSelection(){
       localStorage.removeItem('currentSpot')
-      this.router.navigate(['pulse'])
-      this.spotsService.current_spot_name = null
-      this.spotsService.current_spot = null
+      this.router.navigate(['/'])
+      this.spotService.current_spot_name = null
+      this.spotService.current_spot = null
     }
 }

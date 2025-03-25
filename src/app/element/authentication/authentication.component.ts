@@ -2,7 +2,7 @@
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { SpotsService } from '../../helper/spots.service';
+import { SpotService } from '../../helper/spots.service';
 import { LocationService } from 'src/app/helper/location.service';
 import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/helper/authentication.service';
@@ -36,7 +36,7 @@ export class AuthenticationComponent {
     public fb: FormBuilder,
     public authenticationService: AuthenticationService,
     public locationService: LocationService,
-    private spotsService : SpotsService
+    private spotService : SpotService
   ) { 
  
   }
@@ -114,14 +114,14 @@ export class AuthenticationComponent {
   }
 
   async getStylistSpots(){
-    this.spotsService.getStylistSpots()
+    this.spotService.getStylistSpots()
     .then((res:any) => {
       console.log(res)
-      this.spotsService.spots = res.spots
+      this.spotService.spots = res.spots
       if(localStorage.getItem("currentSpot") && localStorage.getItem("currentSpot") != "null"){
-        this.spotsService.current_spot = JSON.parse(localStorage.getItem("currentSpot") ?? "")
-      this.spotsService.current_spot_name = this.spotsService.current_spot.name
-      console.log(this.spotsService.current_spot_name)
+        this.spotService.current_spot = JSON.parse(localStorage.getItem("currentSpot") ?? "")
+      this.spotService.current_spot_name = this.spotService.current_spot.name
+      console.log(this.spotService.current_spot_name)
       }
     })
   }
@@ -183,7 +183,7 @@ async searchAddress(address:any){
         localStorage.setItem('stylistId', this.authenticationService.stylistId)
         this.authenticationService.presentToast('welcome to geostyle pulse')
         await this.getStylistSpots()
-        this.router.navigate(['pulse'])
+        this.router.navigate(['/'])
         // setTimeout(() => {
         //   window.location.reload()
         // }, 850);
